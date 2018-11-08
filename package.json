@@ -3,10 +3,33 @@
   "version": "1.0.0",
   "description": "string reversal lib",
   "main": "index.js",
+  "scripts": {
+    "test": "cross-env BABEL_ENV=test ava",
+    "build": "cross-env BABEL_ENV=build rollup -c"
+  },
+  "ava": {
+    "files": [
+      "test/*.js"
+    ],
+    "source": [
+      "src/*.{js}",
+      "!dist/**/*"
+    ],
+    "tap": true,
+    "require": "babel-register",
+    "babel": "inherit"
+  },
   "author": "Mario Quintana",
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "ava": "^0.25.0"
+    "@ava/babel-preset-stage-4": "^1.1.0",
+    "ava": "^0.25.0",
+    "babel-core": "6.24.1",
+    "babel-plugin-external-helpers": "6.22.0",
+    "babel-preset-env": "1.4.0",
+    "cross-env": "5.1.4",
+    "rollup-plugin-babel": "2.7.1",
+    "rollup-watch": "3.2.2"
   }
 }
